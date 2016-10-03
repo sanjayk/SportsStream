@@ -7,16 +7,16 @@ export type Config = {
 };
 
 const initialState: Config = {
-  appLinkURL: 'https://www.fbf8.com/'
+  subRedditURL: 'https://www.reddit.com/r/sports.json'
 };
 
 function config(state: Config = initialState, action: Action): Config {
   if (action.type === 'LOADED_CONFIG') {
     return {
-      appLinkURL: action.config.get('appLinkURL') || state.appLinkURL
+      subRedditURL: action.config.get('subRedditURL') || state.subRedditURL
     };
   }
-
+  
   return state;
 }
 

@@ -11,9 +11,7 @@ import App from './app'
 const logger = createLogger()
 const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore)
 const store = createStoreWithMiddleware(rootReducer)
-console.log('==========');
-console.log(store);
-console.log('==========');
+
 const sportsStream = () => {
   return (
     <Provider store={store}>

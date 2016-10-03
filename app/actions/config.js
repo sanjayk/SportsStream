@@ -1,9 +1,8 @@
 'use strict';
 
+import * as types from './types';
 
-import type { Action } from './types';
-
-async function loadConfig(): Promise<Action> {
+function loadConfig() {
   const config = '';
   return {
     type: 'LOADED_CONFIG',
