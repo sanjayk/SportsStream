@@ -1,4 +1,4 @@
-import * as ActionTypes from './types';
+import * as ActionTypes from './Types';
 import {getSubRedditUrl} from '../common/APIUtils';
 
 export function selectSubReddit(subreddit) {

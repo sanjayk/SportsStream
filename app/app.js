@@ -1,74 +1,49 @@
-'use strict'
+import React from 'react-native';
+import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 
-import React, { Component } from 'react';
-import {
+//import Main from '../components/Main';
+//import PostDetail from '../components/post/PostDetail';
+import MainContainer from './MainContainer';
+
+let {
+  StyleSheet,
+  Navigator,
+  PropTypes,
   View,
   Text,
-  Navigator,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-/*import {
-  setSearchKeyword,
-  runSearch,
-  moreVideos,
-  newSearch,
-} from './actions'
-import Search from './components/search'*/
+  BackAndroid,
+  ToolbarAndroid,
+  Platform
+} = React;
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this._isHomeScreen.bind(this);
+  }
+
+  _isHomeScreen() {
+    //FIXME May not be a correct way to detect home screen...
+    return Actions.currentRouter.currentRoute.title === 'Home';
+  }
+
   render() {
+    BackAndroid.addEventListener('hardwareBackPress', () => {
+        if (this._isHomeScreen()) {
+          return false;
+        };
+        Actions.pop();
+        return true;
+    });
+    const shouldHideToolbar = Platform.OS === 'ios' ? false : true;
     return (
-      <View style={styles.container}>
-        <Text>This is a test</Text>
-      </View>
+      <Router hideNavBar={shouldHideToolbar}>
+        <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottomAndroid}/>
+        <Route name="home" component={MainContainer} initial={true} wrapRouter={false} title="Home" schema="modal" navBar={ToolbarAndroid}/>
+        <Route name="postDetail" component={PostDetail} title="PostDetail" schema="modal"/>
+      </Router>
     )
   }
 }
 
-const stateToProps = (state) => {
-  return {
-    //search: state.search
-  }
-}
-
-const dispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    /*setSearchKeyword,
-    runSearch,
-    moreVideos,
-    newSearch,*/
-  }, dispatch)
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  navBar: {
-    backgroundColor: 'white',
-  },
-  navBarText: {
-    fontSize: 16,
-    marginVertical: 10,
-  },
-  navBarTitleText: {
-    fontWeight: '500',
-    marginVertical: 9,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-  },
-  navBarRightButton: {
-    paddingRight: 10,
-  },
-  scene: {
-    flex: 1,
-    paddingTop: 63,
-  }
-})
-
-export default connect(stateToProps, dispatchToProps)(App)
+export default App;

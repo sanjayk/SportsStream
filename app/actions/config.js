@@ -1,6 +1,6 @@
 'use strict';
 
-import * as types from './types';
+import * as types from './Types';
 
 function loadConfig() {
   const config = '';
