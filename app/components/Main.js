@@ -11,7 +11,7 @@ Dimensions } from 'react-native';
 export const DEFAULT_SUBREDDIT = 'sports';
 //import React from 'react-native';
 //import SubRedditList from './subreddits/SubRedditList';
-//import PostList from './posts/PostList';
+import PostList from './posts/PostList';
 import {selectSubReddit, fetchPostsIfNeeded, refreshSubReddit} from '../actions';
 
 import {connect} from 'react-redux';
@@ -54,7 +54,7 @@ class Main extends React.Component {
       const windowDims = Dimensions.get('window');
       return (
         <View style={{ paddingTop: 65, height: windowDims.height}}>
-          // <PostList {...this.props}/>
+          <PostList {...this.props}/>
         </View>
       )
     }
@@ -71,7 +71,7 @@ class Main extends React.Component {
           titleColor="#fff"
           style={styles.toolbar}
           title="RedditReactReduxNative"/>
-          // <PostList {...this.props}/>
+          <PostList {...this.props}/>
       </DrawerLayoutAndroid>
     )
   }

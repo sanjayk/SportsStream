@@ -13,9 +13,6 @@ class MainContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("====");
-  console.log(state);
-  console.log("====");
   const { selectedSubReddit, postsBySubReddit } = state;
   const {
     isFetching,
