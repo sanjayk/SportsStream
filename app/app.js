@@ -7,7 +7,7 @@ import {   StyleSheet,
   BackAndroid,
   ToolbarAndroid,
   Platform } from 'react-native';
-import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
+//import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
 
 //import Main from '../components/Main';
 //import PostDetail from '../components/post/PostDetail';
@@ -21,7 +21,7 @@ class App extends React.Component {
 
   _isHomeScreen() {
     //FIXME May not be a correct way to detect home screen...
-    return Actions.currentRouter.currentRoute.title === 'Home';
+    //return Actions.currentRouter.currentRoute.title === 'Home';
   }
 
   render() {
@@ -29,14 +29,18 @@ class App extends React.Component {
         if (this._isHomeScreen()) {
           return false;
         };
-        Actions.pop();
+        //Actions.pop();
         return true;
     });
     const shouldHideToolbar = Platform.OS === 'ios' ? false : true;
     return (
-      <Router hideNavBar={shouldHideToolbar}>
-        <Route key="home" name="home" component={MainContainer} initial={true} wrapRouter={false} title="Home" navBar={ToolbarAndroid}/>
-      </Router>
+      <Navigator
+      initialRoute={{ title: 'Home', index: 0 }}
+      renderScene={(route, navigator) => {
+        return <MainContainer title={route.title} />
+      }}
+    />
+
     )
   }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Actions} from 'react-native-router-flux';
 //import {isValidThumbnail} from '../../utils/UrlUtils';
 import {
   View,

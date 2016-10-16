@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from './Post';
-import {Actions} from 'react-native-router-flux';
+//import {Actions} from 'react-native-router-flux';
 import {selectSubReddit, fetchPostsIfNeeded, refreshSubReddit} from '../../actions';
 
 import {
@@ -90,7 +90,7 @@ class PostList extends React.Component {
   }
 
   _pressPost(post) {
-    Actions.postDetail({data: post});
+    //Actions.postDetail({data: post});
   }
 
   _renderPosts(post) {
