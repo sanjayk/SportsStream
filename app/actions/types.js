@@ -1,0 +1,8 @@
+'use strict';
+
+
+export const LOADED_CONFIG = 'LOADED_CONFIG';
+export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
+export const REFRESH_SUBREDDIT = 'REFRESH_SUBREDDIT';
+export const REQUEST_POSTS = 'REQUEST_POSTS';
+export const RECEIVE_POSTS = 'RECEIVE_POSTS';
