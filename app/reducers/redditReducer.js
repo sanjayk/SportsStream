@@ -1,5 +1,5 @@
 'use strict';
-import { DEFAULT_SUBREDDIT } from '../components/subreddits';
+import { DEFAULT_SUBREDDIT } from '../components/Main';
 import { combineReducers } from 'redux';
 import * as ActionTypes from '../actions/Types';
 
@@ -54,9 +54,11 @@ function postsBySubReddit(state = {}, action) {
   }
 }
 
-const rootReducer = combineReducers({
+/*const redditReducer = combineReducers({
   selectedSubReddit,
   postsBySubReddit
 });
 
-export default redditReducer;
+export default redditReducer;*/
+
+export { selectedSubReddit, postsBySubReddit };

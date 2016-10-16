@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { StyleSheet,
 View,
 DrawerLayoutAndroid,
@@ -6,9 +6,9 @@ Text,
 Image,
 ToolbarAndroid,
 Platform,
-PropTypes,
 Dimensions } from 'react-native';
 
+export const DEFAULT_SUBREDDIT = 'sports';
 //import React from 'react-native';
 //import SubRedditList from './subreddits/SubRedditList';
 //import PostList from './posts/PostList';

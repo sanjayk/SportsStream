@@ -1,20 +1,17 @@
-import React from 'react-native';
-import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
-
-//import Main from '../components/Main';
-//import PostDetail from '../components/post/PostDetail';
-import MainContainer from './MainContainer';
-
-let {
-  StyleSheet,
+import React from 'react';
+import {   StyleSheet,
   Navigator,
   PropTypes,
   View,
   Text,
   BackAndroid,
   ToolbarAndroid,
-  Platform
-} = React;
+  Platform } from 'react-native';
+import {Router, Route, Schema, Animations, TabBar, Actions} from 'react-native-router-flux';
+
+//import Main from '../components/Main';
+//import PostDetail from '../components/post/PostDetail';
+import MainContainer from './MainContainer';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,9 +35,7 @@ class App extends React.Component {
     const shouldHideToolbar = Platform.OS === 'ios' ? false : true;
     return (
       <Router hideNavBar={shouldHideToolbar}>
-        <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottomAndroid}/>
-        <Route name="home" component={MainContainer} initial={true} wrapRouter={false} title="Home" schema="modal" navBar={ToolbarAndroid}/>
-        <Route name="postDetail" component={PostDetail} title="PostDetail" schema="modal"/>
+        <Route key="home" name="home" component={MainContainer} initial={true} wrapRouter={false} title="Home" navBar={ToolbarAndroid}/>
       </Router>
     )
   }
