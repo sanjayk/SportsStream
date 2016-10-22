@@ -54,11 +54,4 @@ function postsBySubReddit(state = {}, action) {
   }
 }
 
-/*const redditReducer = combineReducers({
-  selectedSubReddit,
-  postsBySubReddit
-});
-
-export default redditReducer;*/
-
 export { selectedSubReddit, postsBySubReddit };

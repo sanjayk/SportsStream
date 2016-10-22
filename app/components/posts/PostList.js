@@ -8,7 +8,7 @@ import {
   View,
   Text,
   ProgressBarAndroid,
-  ActivityIndicatorIOS,
+  ActivityIndicator,
   Platform,
   StyleSheet,
   Dimensions
@@ -55,7 +55,7 @@ class PostList extends React.Component {
     let LoadingView;
 
     if (Platform.OS === 'ios') {
-      LoadingView = ActivityIndicatorIOS;
+      LoadingView = ActivityIndicator;
     } else {
       LoadingView = ProgressBarAndroid;
     }
@@ -71,7 +71,7 @@ class PostList extends React.Component {
     let LoadingView;
 
     if (Platform.OS === 'ios') {
-      LoadingView = ActivityIndicatorIOS;
+      LoadingView = ActivityIndicator;
     } else {
       LoadingView = ProgressBarAndroid;
     }
@@ -104,6 +104,15 @@ class PostList extends React.Component {
     )
   }
 
+  _renderSectionHeader(data, sectionId) {
+    var text;
+    return (
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionHeaderText}>{sectionId}</Text>
+      </View>
+    );
+  }
+
   render() {
     if (this.state.isFetching && this.state.count === 0) {
       return this.renderLoadingView();
@@ -115,6 +124,7 @@ class PostList extends React.Component {
           renderFooter={this.renderFooter}
           onEndReached={this.onEndReached.bind(this)}
           renderSeparator={(sectionID, rowID) => <View key={`${sectionID}-${rowID}`} style={styles.separator} />}
+          renderSectionHeader={this._renderSectionHeader}
         />
       )
     }
@@ -126,6 +136,22 @@ export default PostList;
 
 var styles = StyleSheet.create({
   separator: {
-    height: 1, backgroundColor: '#CCCCCC',
+    height: 1,
+    backgroundColor: '#CCCCCC',
+  },
+  sectionHeader: {
+    height:75,
+    backgroundColor: '#FF0041',
+    padding: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  sectionHeaderText: {
+    fontSize: 16,
+    color: 'white',
+    paddingLeft: 10,
+    paddingRight: 10
   }
 });

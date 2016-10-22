@@ -12,6 +12,7 @@
     "redux": "3.5.2",
     "redux-logger": "2.6.1",
     "redux-thunk": "2.1.0",
-    "reselect": "2.5.1"
+    "reselect": "2.5.1",
+    "react-native-router-flux": "^2.1.3"
   }
 }

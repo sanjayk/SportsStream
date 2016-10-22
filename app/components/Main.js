@@ -53,7 +53,7 @@ class Main extends React.Component {
     if (Platform.OS === 'ios') {
       const windowDims = Dimensions.get('window');
       return (
-        <View style={{ paddingTop: 65, height: windowDims.height}}>
+        <View style={{ height: windowDims.height}}>
           <PostList {...this.props}/>
         </View>
       )
