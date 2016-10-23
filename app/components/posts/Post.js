@@ -47,7 +47,7 @@ class Post extends React.Component {
         <View style={styles.container}>
           { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
           <View style={styles.middleContainer}>
-            <Text style={styles.title}>{this.props.title}</Text>
+            <Text numberOfLines={2} style={styles.title}>{this.props.title}</Text>
             <Text>{this.props.author}</Text>
           </View>
           <View style={styles.rightContainer}>
