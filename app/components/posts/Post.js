@@ -1,3 +1,5 @@
+import Swipeout from 'react-native-swipeout';
+
 import React from 'react';
 //import {isValidThumbnail} from '../../utils/UrlUtils';
 import {
@@ -9,6 +11,8 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
+
+import Colors from '../../common/Colors';
 
 class Post extends React.Component {
   constructor(props) {
@@ -43,28 +47,42 @@ class Post extends React.Component {
           </View>
     }
     return (
-      <TouchableComponent {...buttonProps} onPress={this.props.onPress}>
-        <View style={styles.container}>
-          { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
-          <View style={styles.middleContainer}>
-            <Text numberOfLines={2} style={styles.title}>{this.props.title}</Text>
-            <Text>{this.props.author}</Text>
+      <Swipeout right={swipeoutBtns}>
+        <TouchableComponent {...buttonProps} onPress={this.props.onPress}>
+          <View style={styles.container}>
+            { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
+            <View style={styles.middleContainer}>
+              <Text numberOfLines={2} style={styles.title}>{this.props.title}</Text>
+              <Text>{this.props.author}</Text>
+            </View>
+            <View style={styles.rightContainer}>
+              {v}
+            </View>
           </View>
-          <View style={styles.rightContainer}>
-            {v}
-          </View>
-        </View>
-      </TouchableComponent>
+        </TouchableComponent>
+      </Swipeout>
     )
   }
 }
 
+// Buttons
+var swipeoutBtns = [
+  {
+    text: 'Like',
+    backgroundColor: Colors.greenTeal,
+  },
+  {
+    text: 'DisLike',
+    backgroundColor: Colors.darkPink,
+  }
+]
+
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
     padding: 10,
-    backgroundColor: '#F4F4F4'
+    backgroundColor: Colors.grey
   },
   middleContainer: {
     flex: 1,

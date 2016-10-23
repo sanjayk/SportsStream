@@ -8,7 +8,10 @@ ToolbarAndroid,
 Platform,
 Dimensions } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 export const DEFAULT_SUBREDDIT = 'sports';
+import Colors from '../common/Colors';
 //import React from 'react-native';
 //import SubRedditList from './subreddits/SubRedditList';
 import PostList from './posts/PostList';
@@ -55,7 +58,7 @@ class Main extends React.Component {
       return (
         <View style={{ height: windowDims.height}}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionHeaderText}>{this.props.title}</Text>
+              <Icon name="rocket" style={styles.sectionHeaderIcon} size={30} color="#900" />
           </View>
           <PostList {...this.props}/>
         </View>
@@ -126,7 +129,7 @@ var styles = StyleSheet.create({
   },
   sectionHeader: {
     height:75,
-    backgroundColor: '#FB5271',
+    backgroundColor: Colors.darkPink,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -137,5 +140,9 @@ var styles = StyleSheet.create({
     color: 'white',
     paddingLeft: 10,
     paddingRight: 10
+  },
+  sectionHeaderIcon: {
+    color: Colors.lightPink,
+    marginTop: 5
   }
 });

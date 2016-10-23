@@ -128,6 +128,7 @@ class PostList extends React.Component {
               onRefresh={this._onRefresh.bind(this)}
             />
           }
+          style={styles.listview}
         />
       )
     }
@@ -141,5 +142,8 @@ var styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: '#F4F4F4',
-  }
+  },
+  listview: {
+    flex: 1,
+  },
 });
