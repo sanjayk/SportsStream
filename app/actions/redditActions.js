@@ -8,12 +8,13 @@ export function selectSubReddit(subreddit) {
   }
 }
 
-export function refreshSubReddit(subreddit) {
-  return (
-    type: ActionTypes.REFRESH_SUBREDDIT,
-    subreddit: subreddit
-  )
-}
+// export function refreshSubReddit(subreddit, after) {
+//   return {
+//     type: ActionTypes.REFRESH_SUBREDDIT,
+//     subreddit: subreddit,
+//     after: after
+//   }
+// }
 
 function requestPosts(subreddit, after) {
   return {

@@ -29,11 +29,12 @@ class Post extends React.Component {
     }
 
     //let isValid = isValidThumbnail(this.props.thumbnail)
-    const isValid = false;
+    const isValid = true;
     let v;
+
     if (isValid) {
       v = <Image
-            source={{uri: this.props.thumbnail}}
+            source={{uri: this.props.thumbnail.replace('http://', 'https://')}}
             style={styles.thumbnail}
           />
     } else {
@@ -41,11 +42,10 @@ class Post extends React.Component {
             <Text>{this.props.thumbnail}</Text>
           </View>
     }
-
     return (
       <TouchableComponent {...buttonProps} onPress={this.props.onPress}>
         <View style={styles.container}>
-          <Text style={styles.ups}>{this.props.ups}</Text>
+          { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
           <View style={styles.middleContainer}>
             <Text style={styles.title}>{this.props.title}</Text>
             <Text>{this.props.author}</Text>
@@ -62,15 +62,20 @@ class Post extends React.Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    padding: 10,
+    backgroundColor: '#F4F4F4'
   },
   middleContainer: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    padding: 10
   },
   ups: {
     flex: 0.3,
     fontSize: 16,
-    marginLeft: 8
+    marginLeft: 8,
+    backgroundColor: '#474747'
   },
   title: {
     fontWeight: 'bold',
