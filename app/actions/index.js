@@ -1,7 +1,7 @@
 'use strict';
 
-const configActions = require('./config');
-const redditActions = require('./redditActions');
+const configActions = require('./Config');
+const redditActions = require('./RedditActions');
 
 module.exports = {
   ...configActions,

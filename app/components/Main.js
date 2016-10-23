@@ -54,6 +54,9 @@ class Main extends React.Component {
       const windowDims = Dimensions.get('window');
       return (
         <View style={{ height: windowDims.height}}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionHeaderText}>{this.props.title}</Text>
+          </View>
           <PostList {...this.props}/>
         </View>
       )
@@ -81,7 +84,7 @@ Main.propTypes = {
   selectedSubReddit: PropTypes.string.isRequired,
   posts: PropTypes.array.isRequired,
   after: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
 }
 
 export default Main;
@@ -89,7 +92,8 @@ export default Main;
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'stretch'
+    alignItems: 'stretch',
+    backgroundColor: '#CCCCCC'
   },
   dummy: {
     flex: 1,
@@ -120,4 +124,18 @@ var styles = StyleSheet.create({
     height: 56,
     marginTop: 24,
   },
+  sectionHeader: {
+    height:75,
+    backgroundColor: '#FB5271',
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  sectionHeaderText: {
+    fontSize: 16,
+    color: 'white',
+    paddingLeft: 10,
+    paddingRight: 10
+  }
 });

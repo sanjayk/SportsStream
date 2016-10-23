@@ -11,7 +11,8 @@ import {
   ActivityIndicator,
   Platform,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  RefreshControl
 } from 'react-native';
 
 class PostList extends React.Component {
@@ -24,18 +25,18 @@ class PostList extends React.Component {
       }),
       isFetching: true,
       after: "",
-      count: 0
+      count: 0,
+      didRefresh: false,
     }
   }
 
   componentDidMount() {
-    const { dispatch, selectedSubReddit, after } = this.props;
+    const { dispatch, selectedSubReddit, after, title } = this.props;
     dispatch(fetchPostsIfNeeded(selectedSubReddit, this.props.after));
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    const { dispatch, selectedSubReddit, after } = this.props;
+    const { dispatch, selectedSubReddit, after, title } = this.props;
     this.setState({
       isFetching: nextProps.isFetching,
       dataSource: this.state.dataSource.cloneWithRows(nextProps.posts),
@@ -47,7 +48,7 @@ class PostList extends React.Component {
   }
 
   onEndReached() {
-    const { dispatch, selectedSubReddit, after } = this.props;
+    const { dispatch, selectedSubReddit, after, title } = this.props;
     dispatch(fetchPostsIfNeeded(selectedSubReddit, after));
   }
 
@@ -104,13 +105,10 @@ class PostList extends React.Component {
     )
   }
 
-  _renderSectionHeader(data, sectionId) {
-    var text;
-    return (
-      <View style={styles.sectionHeader}>
-        <Text style={styles.sectionHeaderText}>{sectionId}</Text>
-      </View>
-    );
+  _onRefresh() {
+    const { dispatch, selectedSubReddit, after } = this.props;
+    this.setState({didRefresh: false});
+    dispatch(fetchPostsIfNeeded(selectedSubReddit, after));
   }
 
   render() {
@@ -124,7 +122,12 @@ class PostList extends React.Component {
           renderFooter={this.renderFooter}
           onEndReached={this.onEndReached.bind(this)}
           renderSeparator={(sectionID, rowID) => <View key={`${sectionID}-${rowID}`} style={styles.separator} />}
-          renderSectionHeader={this._renderSectionHeader}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.didRefresh}
+              onRefresh={this._onRefresh.bind(this)}
+            />
+          }
         />
       )
     }
@@ -137,21 +140,6 @@ export default PostList;
 var styles = StyleSheet.create({
   separator: {
     height: 1,
-    backgroundColor: '#CCCCCC',
-  },
-  sectionHeader: {
-    height:75,
-    backgroundColor: '#FF0041',
-    padding: 10,
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  sectionHeaderText: {
-    fontSize: 16,
-    color: 'white',
-    paddingLeft: 10,
-    paddingRight: 10
+    backgroundColor: '#F4F4F4',
   }
 });

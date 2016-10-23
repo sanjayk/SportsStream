@@ -1,10 +1,10 @@
 'use strict';
 
 var { combineReducers } = require('redux');
-import {selectedSubReddit, postsBySubReddit} from './redditReducer';
+import {selectedSubReddit, postsBySubReddit} from './RedditReducer';
 
 module.exports = combineReducers({
-  config: require('./config'),
+  config: require('./Config'),
   selectedSubReddit,
   postsBySubReddit
 });

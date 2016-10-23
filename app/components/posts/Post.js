@@ -63,10 +63,13 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    padding: 10
+    padding: 10,
+    backgroundColor: '#F4F4F4'
   },
   middleContainer: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    padding: 10
   },
   ups: {
     flex: 0.3,
