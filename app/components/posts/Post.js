@@ -1,3 +1,5 @@
+'use strict'
+
 import Swipeout from 'react-native-swipeout';
 
 import React from 'react';
@@ -13,6 +15,7 @@ import {
 } from 'react-native';
 
 import Colors from '../../common/Colors';
+import Button from '../common/Button'
 
 class Post extends React.Component {
   constructor(props) {
@@ -65,21 +68,9 @@ class Post extends React.Component {
   }
 }
 
-// Buttons
-var swipeoutBtns = [
-  {
-    text: 'Like',
-    backgroundColor: Colors.greenTeal,
-  },
-  {
-    text: 'DisLike',
-    backgroundColor: Colors.darkPink,
-  }
-]
-
 var styles = StyleSheet.create({
   container: {
-    //flex: 1,
+    flex: 1,
     flexDirection: 'row',
     padding: 10,
     backgroundColor: Colors.grey
@@ -107,5 +98,19 @@ var styles = StyleSheet.create({
     height: 80
   }
 });
+
+// Buttons
+var swipeoutBtns = [
+  {
+    text: 'Like',
+    backgroundColor: Colors.greenTeal,
+    component: <Button iconName="thumbs-o-up" iconColor={Colors.lightPink} iconSize={30}></Button>
+  },
+  {
+    text: 'DisLike',
+    backgroundColor: Colors.darkPink,
+    component: <Button iconName="thumbs-o-down" iconColor={Colors.lightPink} iconSize={30}></Button>
+  }
+]
 
 export default Post;

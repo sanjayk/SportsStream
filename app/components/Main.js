@@ -58,7 +58,8 @@ class Main extends React.Component {
       return (
         <View style={{ height: windowDims.height}}>
           <View style={styles.sectionHeader}>
-              <Icon name="rocket" style={styles.sectionHeaderIcon} size={30} color="#900" />
+              {/* <Icon name="rocket" style={styles.sectionHeaderIcon} size={30} color="#900" /> */}
+              <Image style={{width: 150, height: 75}} source={require('../images/ss-logo.png')} />
           </View>
           <PostList {...this.props}/>
         </View>
@@ -129,7 +130,7 @@ var styles = StyleSheet.create({
   },
   sectionHeader: {
     height:75,
-    backgroundColor: Colors.darkPink,
+    backgroundColor: Colors.mutedWhite,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
