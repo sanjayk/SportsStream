@@ -117,12 +117,14 @@ var styles = StyleSheet.create({
 var swipeoutBtns = [
   {
     text: 'Like',
-    component: <SSSwipeButton iconName="favorite" style={styles.likeButton}
+    underlayColor: Colors.mutedGrey,
+    component: <SSSwipeButton underlayColor={Colors.mutedWhite} iconName="favorite"
                           buttonStyle={styles.button} iconColor={Colors.darkPink} iconSize={30}></SSSwipeButton>
   },
   {
     text: 'DisLike',
-    component: <SSSwipeButton iconName="thumb-down"
+    underlayColor: Colors.mutedGrey,
+    component: <SSSwipeButton underlayColor={Colors.mutedWhite} iconName="thumb-down"
                           buttonStyle={styles.button}  iconColor={Colors.mutedGrey} iconSize={30}></SSSwipeButton>
   }
 ]

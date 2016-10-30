@@ -63,7 +63,7 @@ class PostList extends React.Component {
 
     return(
       <View>
-        <LoadingView styleAttr='Small'/>
+        <LoadingView size="small" color="#aa00aa"/>
       </View>
     )
   }
@@ -112,7 +112,7 @@ class PostList extends React.Component {
   }
 
   render() {
-    if (this.state.isFetching && this.state.count === 0) {
+    if (!this.state.didRefresh && this.state.isFetching && this.state.count === 0) {
       return this.renderLoadingView();
     } else {
       return(
