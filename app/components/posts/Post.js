@@ -1,3 +1,7 @@
+'use strict'
+
+import Swipeout from 'react-native-swipeout';
+
 import React from 'react';
 //import {isValidThumbnail} from '../../utils/UrlUtils';
 import {
@@ -9,6 +13,9 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
+
+import Colors from '../../common/Colors';
+import SSSwipeButton from '../common/SSSwipeButton'
 
 class Post extends React.Component {
   constructor(props) {
@@ -43,18 +50,22 @@ class Post extends React.Component {
           </View>
     }
     return (
-      <TouchableComponent {...buttonProps} onPress={this.props.onPress}>
-        <View style={styles.container}>
-          { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
-          <View style={styles.middleContainer}>
-            <Text numberOfLines={2} style={styles.title}>{this.props.title}</Text>
-            <Text>{this.props.author}</Text>
+
+        <TouchableComponent {...buttonProps} onPress={this.props.onPress}>
+          <View style={styles.container}>
+            { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
+            <Swipeout right={swipeoutBtns}>
+            <View style={styles.middleContainer}>
+              <Text numberOfLines={2} style={styles.title}>{this.props.title}</Text>
+              <Text>{this.props.author}</Text>
+            </View>
+            <View style={styles.rightContainer}>
+              {v}
+            </View>
+            </Swipeout>
           </View>
-          <View style={styles.rightContainer}>
-            {v}
-          </View>
-        </View>
-      </TouchableComponent>
+        </TouchableComponent>
+
     )
   }
 }
@@ -64,7 +75,7 @@ var styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     padding: 10,
-    backgroundColor: '#F4F4F4'
+    backgroundColor: Colors.grey
   },
   middleContainer: {
     flex: 1,
@@ -87,7 +98,33 @@ var styles = StyleSheet.create({
   thumbnail: {
     width: 80,
     height: 80
+  },
+  button: {
+    flex:1,
+    flexDirection:'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
+    height: 50,
+    width: 50
   }
 });
+
+// Buttons
+var swipeoutBtns = [
+  {
+    text: 'Like',
+    component: <SSSwipeButton iconName="favorite" style={styles.likeButton}
+                          buttonStyle={styles.button} iconColor={Colors.darkPink} iconSize={30}></SSSwipeButton>
+  },
+  {
+    text: 'DisLike',
+    component: <SSSwipeButton iconName="thumb-down"
+                          buttonStyle={styles.button}  iconColor={Colors.mutedGrey} iconSize={30}></SSSwipeButton>
+  }
+]
 
 export default Post;
