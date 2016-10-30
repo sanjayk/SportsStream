@@ -18,7 +18,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export default class SSSwipeButton extends Component {
   render() {
     return (
-      <TouchableHighlight onPress={()=>{}}>
+      <TouchableHighlight underlayColor={this.props.underlayColor} onPress={()=>{}}>
            <View style={this.props.buttonStyle}>
                <Icon name={this.props.iconName} size={this.props.iconSize}
                      color={this.props.iconColor} />
@@ -34,5 +34,6 @@ SSSwipeButton.propTypes = {
   iconName: PropTypes.string,
   iconSize: PropTypes.number,
   iconColor: PropTypes.string,
+  underlayColor: PropTypes.string,
   buttonStyle: PropTypes.object
 };
