@@ -8,7 +8,7 @@ ToolbarAndroid,
 Platform,
 Dimensions } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export const DEFAULT_SUBREDDIT = 'sports';
 import Colors from '../common/Colors';
@@ -58,8 +58,8 @@ class Main extends React.Component {
       return (
         <View style={{ height: windowDims.height}}>
           <View style={styles.sectionHeader}>
-              {/* <Icon name="rocket" style={styles.sectionHeaderIcon} size={30} color="#900" /> */}
-              <Image style={{width: 150, height: 75}} source={require('../images/ss-logo.png')} />
+              <Icon name="strikethrough-s" style={styles.sectionHeaderIcon} size={50} color={Colors.blue} />
+              {/* <Image style={{width: 150, height: 75}} source={require('../images/ss-logo.png')} /> */}
           </View>
           <PostList {...this.props}/>
         </View>
@@ -130,7 +130,7 @@ var styles = StyleSheet.create({
   },
   sectionHeader: {
     height:75,
-    backgroundColor: Colors.mutedWhite,
+    backgroundColor: Colors.blue,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -143,7 +143,7 @@ var styles = StyleSheet.create({
     paddingRight: 10
   },
   sectionHeaderIcon: {
-    color: Colors.lightPink,
-    marginTop: 5
+    color: Colors.mutedWhite,
+    marginTop: 15
   }
 });

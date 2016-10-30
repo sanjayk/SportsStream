@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import Colors from '../../common/Colors';
-import Button from '../common/Button'
+import SSSwipeButton from '../common/SSSwipeButton'
 
 class Post extends React.Component {
   constructor(props) {
@@ -50,10 +50,11 @@ class Post extends React.Component {
           </View>
     }
     return (
-      <Swipeout right={swipeoutBtns}>
+
         <TouchableComponent {...buttonProps} onPress={this.props.onPress}>
           <View style={styles.container}>
             { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
+            <Swipeout right={swipeoutBtns}>
             <View style={styles.middleContainer}>
               <Text numberOfLines={2} style={styles.title}>{this.props.title}</Text>
               <Text>{this.props.author}</Text>
@@ -61,9 +62,10 @@ class Post extends React.Component {
             <View style={styles.rightContainer}>
               {v}
             </View>
+            </Swipeout>
           </View>
         </TouchableComponent>
-      </Swipeout>
+
     )
   }
 }
@@ -96,6 +98,18 @@ var styles = StyleSheet.create({
   thumbnail: {
     width: 80,
     height: 80
+  },
+  button: {
+    flex:1,
+    flexDirection:'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
+    height: 50,
+    width: 50
   }
 });
 
@@ -103,13 +117,13 @@ var styles = StyleSheet.create({
 var swipeoutBtns = [
   {
     text: 'Like',
-    backgroundColor: Colors.greenTeal,
-    component: <Button iconName="thumbs-o-up" iconColor={Colors.lightPink} iconSize={30}></Button>
+    component: <SSSwipeButton iconName="favorite" style={styles.likeButton}
+                          buttonStyle={styles.button} iconColor={Colors.darkPink} iconSize={30}></SSSwipeButton>
   },
   {
     text: 'DisLike',
-    backgroundColor: Colors.darkPink,
-    component: <Button iconName="thumbs-o-down" iconColor={Colors.lightPink} iconSize={30}></Button>
+    component: <SSSwipeButton iconName="thumb-down"
+                          buttonStyle={styles.button}  iconColor={Colors.mutedGrey} iconSize={30}></SSSwipeButton>
   }
 ]
 

@@ -12,25 +12,27 @@ import {
   Image
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
-export default class Button extends Component {
+export default class SSSwipeButton extends Component {
   render() {
     return (
       <TouchableHighlight onPress={()=>{}}>
-           <View>
-               <Icon name={this.props.iconName} size={this.props.iconSize} color={this.props.iconColor} />
+           <View style={this.props.buttonStyle}>
+               <Icon name={this.props.iconName} size={this.props.iconSize}
+                     color={this.props.iconColor} />
            </View>
        </TouchableHighlight>
      );
    }
 };
 
-Button.propTypes = {
+SSSwipeButton.propTypes = {
   ...TouchableOpacity.propTypes,
   disabled: PropTypes.bool,
   iconName: PropTypes.string,
   iconSize: PropTypes.number,
-  iconColor: PropTypes.string
+  iconColor: PropTypes.string,
+  buttonStyle: PropTypes.object
 };
