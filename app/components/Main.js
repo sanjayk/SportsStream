@@ -14,7 +14,8 @@ export const DEFAULT_SUBREDDIT = 'sports';
 import Colors from '../common/Colors';
 //import React from 'react-native';
 //import SubRedditList from './subreddits/SubRedditList';
-import PostList from './posts/PostList';
+//import PostList from './posts/PostList';
+import PostLayout from './posts/layout_news/PostLayout';
 import {selectSubReddit, fetchPostsIfNeeded, refreshSubReddit} from '../actions';
 
 import {connect} from 'react-redux';
@@ -61,7 +62,7 @@ class Main extends React.Component {
               <Icon name="strikethrough-s" style={styles.sectionHeaderIcon} size={50} color={Colors.blue} />
               {/* <Image style={{width: 150, height: 75}} source={require('../images/ss-logo.png')} /> */}
           </View>
-          <PostList {...this.props}/>
+          <PostLayout {...this.props}/>
         </View>
       )
     }
@@ -78,7 +79,7 @@ class Main extends React.Component {
           titleColor="#fff"
           style={styles.toolbar}
           title="RedditReactReduxNative"/>
-          <PostList {...this.props}/>
+          <PostLayout {...this.props}/>
       </DrawerLayoutAndroid>
     )
   }
