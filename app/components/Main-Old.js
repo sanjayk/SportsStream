@@ -9,7 +9,6 @@ Platform,
 Dimensions } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import moment from 'moment';
 
 export const DEFAULT_SUBREDDIT = 'sports';
 import Colors from '../common/Colors';
@@ -22,14 +21,6 @@ import {selectSubReddit, fetchPostsIfNeeded, refreshSubReddit} from '../actions'
 import {connect} from 'react-redux';
 
 class Main extends React.Component {
-  static defaultProps = {
-      date: moment().format('LLLL')
-  }
-
-  state = {
-      date: this.props.date
-  };
-
   constructor(props) {
     super(props);
   }
@@ -68,12 +59,8 @@ class Main extends React.Component {
       return (
         <View style={{ height: windowDims.height}}>
           <View style={styles.sectionHeader}>
-              {/* <Icon name="strikethrough-s" style={styles.sectionHeaderIcon} size={50} color={Colors.blue} /> */}
-              <View>
-                <Text style={styles.sectionHeaderText}>{this.state.date.split(',')[0].trim()}</Text>
-                <Text style={styles.sectionHeaderText}>{this.state.date.split(',')[1].trim()}</Text>
-              </View>
-              <Image style={styles.sectionHeaderIcon} source={require('../images/box-score.png')} />
+              <Icon name="strikethrough-s" style={styles.sectionHeaderIcon} size={50} color={Colors.blue} />
+              {/* <Image style={{width: 150, height: 75}} source={require('../images/ss-logo.png')} /> */}
           </View>
           <PostLayout {...this.props}/>
         </View>
@@ -104,7 +91,6 @@ Main.propTypes = {
   after: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
-
 
 export default Main;
 
@@ -144,24 +130,21 @@ var styles = StyleSheet.create({
     marginTop: 24,
   },
   sectionHeader: {
-    height:100,
+    height:75,
+    backgroundColor: Colors.blue,
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomColor: '#EC8E80',
-    borderBottomWidth: 1,
-    alignItems: 'center'
-  },
-  sectionHeaderIcon: {
-    alignSelf: 'center',
-    marginTop: 20,
-    height: 75,
-    width: 100
+    justifyContent: 'center'
   },
   sectionHeaderText: {
-    fontFamily: 'American Typewriter',
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 16,
+    color: 'white',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  sectionHeaderIcon: {
+    color: Colors.mutedWhite,
+    marginTop: 15
   }
 });
