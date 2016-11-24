@@ -112,6 +112,9 @@ class PostList extends React.Component {
   }
 
   render() {
+    console.log("==================");
+    console.log(this.state);
+    console.log("==================");
     if (!this.state.didRefresh && this.state.isFetching && this.state.count === 0) {
       return this.renderLoadingView();
     } else {
