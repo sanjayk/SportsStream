@@ -156,6 +156,7 @@ var styles = StyleSheet.create({
   sectionHeaderIcon: {
     alignSelf: 'center',
     marginTop: 20,
+    marginLeft: 50,
     height: 75,
     width: 100
   },
