@@ -162,7 +162,7 @@ var styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontFamily: 'American Typewriter',
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
   }
 });

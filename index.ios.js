@@ -1,6 +1,6 @@
 'use strict';
-
-import React, {
+import React from 'react'
+import {
   AppRegistry
 } from 'react-native'
 import sportsStream from './app/SportsStream'
