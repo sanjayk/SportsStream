@@ -1,5 +1,6 @@
 import React from 'react';
-import Post from '../Post';
+//import Post from '../Post';
+import PostsView from '../PostsView';
 //import {Actions} from 'react-native-router-flux';
 import {selectSubReddit, fetchPostsIfNeeded, refreshSubReddit} from '../../../actions';
 
@@ -95,12 +96,15 @@ class PostLayout extends React.Component {
   }
 
   _renderPosts(post) {
+    let preview = (typeof post.preview === 'undefined') ? '' : post.preview;
+    
     return(
-      <Post
+      <PostsView
         onPress={this._pressPost.bind(this, post)}
         title={post.title}
         ups={post.ups}
         thumbnail={post.thumbnail}
+        preview={preview}
         author={post.author}/>
     )
   }
