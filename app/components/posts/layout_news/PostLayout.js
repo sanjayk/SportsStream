@@ -1,5 +1,6 @@
 import React from 'react';
-import Post from '../Post';
+//import Post from '../Post';
+import PostsView from '../PostsView';
 //import {Actions} from 'react-native-router-flux';
 import {selectSubReddit, fetchPostsIfNeeded, refreshSubReddit} from '../../../actions';
 
@@ -94,14 +95,18 @@ class PostLayout extends React.Component {
     //Actions.postDetail({data: post});
   }
 
-  _renderPosts(post) {
+  _renderPosts(post, sectionID, rowID) {
+    let preview = (typeof post.preview === 'undefined') ? '' : post.preview;
+
     return(
-      <Post
+      <PostsView style={styles.postsView}
         onPress={this._pressPost.bind(this, post)}
         title={post.title}
         ups={post.ups}
         thumbnail={post.thumbnail}
-        author={post.author}/>
+        preview={preview}
+        author={post.author}
+        rowID={rowID} />
     )
   }
 
@@ -116,7 +121,7 @@ class PostLayout extends React.Component {
       return this.renderLoadingView();
     } else {
       return(
-        <ListView
+        <ListView contentContainerStyle={styles.list}
           dataSource={this.state.dataSource}
           renderRow={this._renderPosts.bind(this)}
           renderFooter={this.renderFooter}
@@ -128,7 +133,7 @@ class PostLayout extends React.Component {
               onRefresh={this._onRefresh.bind(this)}
             />
           }
-          style={styles.listview}
+
         />
       )
     }
@@ -143,7 +148,14 @@ var styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#F4F4F4',
   },
-  listview: {
-    flex: 1,
+  list: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
+  postsView: {
+    flex: 1,
+    height: 220,
+    backgroundColor: '#4C81FF'
+  }
 });
