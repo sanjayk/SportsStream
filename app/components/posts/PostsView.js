@@ -38,14 +38,15 @@ class PostsView extends React.Component {
     }
 
     //let isValid = isValidThumbnail(this.props.thumbnail)
-    const isValidPreview = isValidPreviewObject(this.props.preview.images)
+    const isValidPreview = isValidPreviewObject(this.props.preview.images);
+    let firstRow = this.props.rowID < 1 ? true : false;
     //const isValid = true;
     let v;
 
     if (isValidPreview) {
-      console.log(this.props);
+
       v = <Image
-            //source={{uri: this.props.thumbnail.replace('http://', 'https://')}}
+            // source={{uri: this.props.thumbnail.replace('http://', 'https://')}}
             source={{uri: this.props.preview.images[0].source.url}}
             style={styles.thumbnail}
           />
@@ -54,17 +55,22 @@ class PostsView extends React.Component {
             <Text>{this.props.thumbnail}</Text>
           </View>
     }
+
+    let rowStyle;
+    if (firstRow)
+      rowStyle = StyleSheet.flatten([styles.rowStandard, styles.rowOne]);
+    else
+      rowStyle = StyleSheet.flatten([styles.rowStandard, styles.rowNext]);
+
     return (
 
-        <TouchableComponent {...buttonProps} onPress={this.props.onPress}>
-          <View style={styles.container}>
-            { /* <Text style={styles.ups}>{this.props.ups}</Text> */ }
-            <View style={styles.bigContainer}>
+        <TouchableComponent {...buttonProps} onPress={this.props.onPress} style={rowStyle}>
+            <View>
               {v}
               <Text numberOfLines={2} style={styles.title}>{this.props.title}</Text>
               <Text>{this.props.author}</Text>
             </View>
-          </View>
+
         </TouchableComponent>
 
     )
@@ -73,20 +79,41 @@ class PostsView extends React.Component {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
+    height: 210,
+    backgroundColor: '#FF4C4C'
+  },
+  rowStandard: {
     justifyContent: 'center',
+    padding: 5,
+    margin: 10,
+    backgroundColor: '#F4E3D6',
     alignItems: 'center',
-    padding: 10,
-    backgroundColor: Colors.grey
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#E2D5D3'
+  },
+  rowOne: {
+    width: 300,
+    height: 300,
+  },
+  rowNext: {
+    width: 150,
+    height: 150,
+  },
+  heroRow: {
+    flex: 1
+  },
+  twoColRow: {
+    flex: 2
   },
   bigContainer: {
     backgroundColor: '#FFFFFF'
   },
   thumbnail: {
-    width: 200,
-    height: 200,
-    borderRadius: 5
+    width: 100,
+    height: 100,
+    borderRadius: 5,
+    flex: 1
   },
   title: {
     fontWeight: 'bold',
